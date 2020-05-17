@@ -206,7 +206,7 @@ end
 if msg.type ~= 'pv' and msg.GroupActive then 
 
 if MsgText[1] == 'شحن' and MsgText[2] then
-if not msg.SudoUser then return "هذاالامر يخص المطور فقط  \n" end
+if not msg.SudoUser then return "هذا الامر يخص المطور فقط  \n" end
 if tonumber(MsgText[2]) > 0 and tonumber(MsgText[2]) < 1001 then
 local extime = (tonumber(MsgText[2]) * 86400)
 redis:setex(dreem..'ExpireDate:'..msg.chat_id_, extime, true)
@@ -1032,7 +1032,7 @@ end
 
 
 if MsgText[2] == "المنشئيين" then
-if not msg.SudoUser then return "هذاالامر يخص المطور فقط  \n" end
+if not msg.SudoUser then return "هذا الامر يخص المطور فقط  \n" end
 local NumMnsha = redis:scard(dreem..':MONSHA_BOT:'..msg.chat_id_)
 if NumMnsha ==0 then 
 return " عذرا لا يوجد منشئيين ليتم مسحهم \n!" 
@@ -1592,7 +1592,7 @@ end -- end of insert group
 
 
 if MsgText[1] == 'مسح' and MsgText[2] == 'المطورين'  then
-if not msg.SudoBase then return"⋆  ⇽ هذاالامر يخص المطور الاساسي فقط . \n" end
+if not msg.SudoBase then return"⋆  ⇽ هذا الامر يخص المطور الاساسي فقط . \n" end
 local mtwren = redis:scard(dreem..':SUDO_BOT:')
 if mtwren == 0 then  return "- عذرًا لا يوجد مطورين في البوت  ." end
 redis:del(dreem..':SUDO_BOT:') 
@@ -1600,7 +1600,7 @@ return "- تم مسح {* "..mtwren.." *} من المطورين "
 end
 
 if MsgText[1] == 'مسح' and MsgText[2] == "قائمه العام"  then
-if not msg.SudoBase then return"هذاالامر يخص {المطور الاساسي} فقط  \n" end
+if not msg.SudoBase then return"هذا الامر يخص {المطور الاساسي} فقط  \n" end
 local addbannds = redis:scard(dreem..'gban_users')
 if addbannds ==0 then 
 return " قائمة الحظر فارغه . " 
@@ -1612,7 +1612,7 @@ end
 if msg.SudoBase then
 
 if MsgText[1] == "رفع مطور" then
-if not msg.SudoBase then return "⋆  ⇽ هذاالامر يخص المطور الاساسي  فقط . \n" end
+if not msg.SudoBase then return "⋆  ⇽ هذا الامر يخص المطور الاساسي  فقط . \n" end
 if not MsgText[2] and msg.reply_id then 
 GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="up_sudo"}) 
 return false
@@ -1753,7 +1753,7 @@ return chat_list(msg)
 end
 
 if MsgText[1] == 'تعطيل' and MsgText[2] and MsgText[2]:match("-100(%d+)") then
-if not msg.SudoUser then return "هذاالامر يخص المطور, فقط  \n" end
+if not msg.SudoUser then return "هذا الامر يخص المطور, فقط  \n" end
 if redis:sismember(dreem..'group:ids',MsgText[2]) then
 local name_gp = redis:get(dreem..'group:name'..MsgText[2])
 sendMsg(MsgText[2],0,'⋆  ⇽ تم تعطيل المجموعه بأمر من المطور  \n غادرت . ')
@@ -1770,7 +1770,7 @@ return redis:get(dreem..":TEXT_SUDO") or 'لا يوجد وصف المطور .\n�
 end
 
 if MsgText[1] == "اذاعه عام بالتوجيه" or MsgText[1] == "اذاعه عام بالتوجيه 📣" then
-if not msg.SudoUser then return"هذاالامر يخص المطور, فقط  \n" end
+if not msg.SudoUser then return"هذا الامر يخص المطور, فقط  \n" end
 if not msg.SudoBase and not redis:get(dreem..'lock_brod') then 
 return "⋆  ⇽ الاذاعه مقفوله من قبل المطور الاساسي  ." 
 end
@@ -1779,7 +1779,7 @@ return "⋆  ⇽ حسنًا  الان ارسل التوجيه للاذاعه ."
 end
 
 if MsgText[1] == "اذاعه عام" or MsgText[1] == "اذاعه عام 📢" then    
-if not msg.SudoUser then return"هذاالامر يخص المطور, فقط  \n" end
+if not msg.SudoUser then return"هذا الامر يخص المطور فقط  \n" end
 if not msg.SudoBase and not redis:get(dreem..'lock_brod') then 
 return "⋆  ⇽ الاذاعه مقفوله من قبل المطور الاساسي  ." 
 end
@@ -1788,7 +1788,7 @@ return "⋆  ⇽ حسنًا  الان ارسل الكليشه للاذاعه ع�
 end
 
 if MsgText[1] == "اذاعه خاص" or MsgText[1] == "اذاعه خاص 🗣" then    
-if not msg.SudoUser then return "هذاالامر يخص المطور, فقط  \n" end
+if not msg.SudoUser then return "هذا الامر يخص المطور فقط  \n" end
 if not msg.SudoBase and not redis:get(dreem..'lock_brod') then 
 return "⋆  ⇽ الاذاعه مقفوله من قبل المطور الاساسي  ." 
 end
@@ -1797,7 +1797,7 @@ return "⋆  ⇽ حسنًا  الان ارسل الكليشه للاذاعه خ�
 end
 
 if MsgText[1] == "اذاعه" or MsgText[1] == "اذاعه 🗣" then    
-if not msg.SudoUser then return"هذاالامر يخص المطور, فقط  \n" end
+if not msg.SudoUser then return"هذا الامر يخص المطور فقط  \n" end
 if not msg.SudoBase and not redis:get(dreem..'lock_brod') then 
 return "⋆  ⇽ الاذاعه مقفوله من قبل المطور الاساسي  ." 
 end
@@ -2952,7 +2952,7 @@ end
 if redis:get(dreem..'welcom:witting'..msg.sender_user_id_) then -- استقبال كليشه الترحيب
 redis:del(dreem..'welcom:witting'..msg.sender_user_id_) 
 redis:set(dreem..'welcome:msg'..msg.chat_id_,msg.text)
-return sendMsg(msg.chat_id_,msg.id_,"⋆  ⇽ تم وضع الترحيب بنجاح كلاتي ." )
+return sendMsg(msg.chat_id_,msg.id_,"⋆  ⇽ تم وضع الترحيب بنجاح  ." )
 end
 if redis:get(dreem..'rulse:witting'..msg.sender_user_id_) then --- استقبال القوانين
 redis:del(dreem..'rulse:witting'..msg.sender_user_id_) 

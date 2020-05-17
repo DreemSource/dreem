@@ -649,7 +649,7 @@ end
 
 function sudolist(msg)
 local list = redis:smembers(dreem..':SUDO_BOT:')
-message = '-قائمـةالمـطورين: \n\n`مطـورالبـوت`**\n'..SUDO_USER..' ←  ' ..SUDO_ID.. '\n*┄─┅══┅─┄ *\n'
+message = '-قائمـةالمـطورين: \n\n`مطـورالبـوت`**\n'..SUDO_USER..' ←  ' ..SUDO_ID.. '\n*⋆ ⋆ ⋆ ⋆  ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆*\n'
 if #list==0 then  message = message.."*-لايـوجد مطـورين حـالياً *"
 else
 for k,v in pairs(list) do
@@ -684,7 +684,7 @@ message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end
 end
-message = message..'*┄─┅══┅─┄ \n\n- قائمه المدراء :*\n\n'
+message = message..'*⋆ ⋆ ⋆ ⋆  ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆\n\n- قائمه المدراء :*\n\n'
 local list = redis:smembers(dreem..'owners:'..msg.chat_id_)
 if #list == 0 then  
 message = message.."-Not Director ~⪼ لا يوجد مدراء !\n" 
