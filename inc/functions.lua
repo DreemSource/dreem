@@ -656,9 +656,9 @@ for k,v in pairs(list) do
 local info = redis:hgetall(dreem..'username:'..v)
 local count = redis:scard(dreem..'mtwr_count'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '`\n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '`\n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '`\n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '`\n'
 end
 end 
 end
@@ -678,9 +678,9 @@ else
 for k,v in pairs(monsha) do
 local info = redis:hgetall(dreem..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '` \n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end
 end
@@ -692,9 +692,9 @@ else
 for k,v in pairs(list) do
 local info = redis:hgetall(dreem..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '` \n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end
 end
@@ -711,9 +711,9 @@ message = '*- قائمه الادمنيه :*\n\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(dreem..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '` \n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end
 send_msg(msg.chat_id_,message,msg.id_)
@@ -729,9 +729,9 @@ message = '*-* قائمه الاعضاء المميزين :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(dreem..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '` \n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end
 send_msg(msg.chat_id_,message,msg.id_)
@@ -756,9 +756,9 @@ message = '*-*قائمه الاعضاء المكتومين :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(dreem..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '` \n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end
 send_msg(msg.chat_id_,message,msg.id_)
@@ -812,9 +812,9 @@ message = ' *-*قائمه المحظورين عام :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(dreem..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
-message = message ..k.. '~⪼ '..(info.username or '')..' ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' ←  `' ..v.. '` \n'
 else
-message = message ..k.. '~⪼ '..(info.username or '')..' l ←  `' ..v.. '` \n'
+message = message ..k.. '⇾ '..(info.username or '')..' l ←  `' ..v.. '` \n'
 end
 end 
 send_msg(msg.chat_id_,message,msg.id_)
@@ -1211,14 +1211,14 @@ function modrem(msg)
 if not msg.SudoUser then return ' *-* أنـت لـسـت الـمـطـور .'end
 if not redis:get(dreem..'group:add'..msg.chat_id_) then return ' *-* المجموعه بالتأكيد ✓️  تم تعطيلها' end  
 rem_data_group(msg.chat_id_)
-return '- *-* تـم تـعـطـيـل الـمـجـمـوعـه .'
+return '- تـم تـعـطـيـل الـمـجـمـوعـه .'
 end
 
 function modrem(msg)
 if not msg.SudoUser then return ' *-*أنـت لـسـت الـمـطـور .'end
 if not redis:get(dreem..'group:add'..msg.chat_id_) then return ' *-*المجموعه بالتأكيد ✓️  تم تعطيلها' end  
 rem_data_group(msg.chat_id_)
-return '- *-*تـم تـعـطـيـل الـمـجـمـوعـه .'
+return '- تـم تـعـطـيـل الـمـجـمـوعـه .'
 end
 
 function action_by_reply(arg,data)  --===  معلومات الرد 
@@ -1243,7 +1243,7 @@ if cmd =="tqeed" then
 if UserID == our_id then   
 return sendMsg(ChatID,MsgID,"- لا يمكنك تقييد البوت\n ") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"- لا يمكنك تقييد مٌـطورالاسـاسـي\n ") 
+return sendMsg(ChatID,MsgID,"- لا يمكنك تقييد المطور الاساسي\n ") 
 elseif redis:sismember(dreem..':SUDO_BOT:',UserID) then 
 return sendMsg(ChatID,MsgID,"- لا يمكنك تقييد المطور\n ") 
 elseif redis:sismember(dreem..':MONSHA_BOT:'..ChatID,UserID) then 
@@ -1388,7 +1388,7 @@ return SendMention(ChatID,UserID,MsgID,'-  العضو ←   '..USERNAME..' \n-  
 end
 
 if cmd == "iduser" then
-return SendMention(ChatID,UserID,MsgID,"- آضـغط على آلآيدي ليتم آلنسـخ\n\n "..USERNAME.." ~⪼ { "..UserID.." }",37,USERCAR)
+return SendMention(ChatID,UserID,MsgID,"⋆ الايـدي واليـوزر .\n\n "..USERNAME.." ⇾ { "..UserID.." }",37,USERCAR)
 end
 if cmd == "whois" then
 local namei = data.first_name_..' '..(data.last_name_ or "")
