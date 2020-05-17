@@ -111,10 +111,10 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   storm_send(chat,msg.id_,"⋆ ⟵ انا بوت وصلاحيتي هي الادمن \n⋆ ")   
   return false  end 
   if (da and da.status_.ID == "ChatMemberStatusCreator") then
-  storm_send(chat,msg.id_,"*⋆ ⟵ عذراً هـذا الشخص هـو منشئ المجموعه \n⋆ ⟵*")   
+  storm_send(chat,msg.id_,"*⋆ ⟵ عذراً هـذا الشخص هـو منشئ المجموعه \n⋆*")   
   return false  end 
   if (da and da.status_.ID == "ChatMemberStatusEditor") then
-  storm_send(chat,msg.id_,"*⋆ ⟵ عذراً هـذا الشخص هـو ادمن في المجموعه \n⋆ ⟵*")   
+  storm_send(chat,msg.id_,"*⋆ ⟵ عذراً هـذا الشخص هـو ادمن في المجموعه \n⋆*")   
   return false  end 
   local SET_ADMIN = https.request('https://api.telegram.org/bot'..Token..'/promoteChatMember?chat_id='.. chat ..'&user_id='.. user..'&can_pin_messages='..pin_msg..'&can_restrict_members='..Add_Kick..'&can_invite_users=true&can_delete_messages='..Add_Del..'&can_change_info='..Add_Info..'&can_promote_members='..Add_SetAdmin..'')
   local JSON_ADMIN = JSON.decode(SET_ADMIN)
@@ -189,7 +189,7 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   end 
   if MsgText[1] == "تنزيل مشرف" then
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   if tonumber(msg.reply_to_message_id_) ~= 0 then 
   function prom_reply(extra, result, success) 
@@ -200,15 +200,15 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   end 
   if MsgText[1] == "رفع مشرف" and MsgText[2] and MsgText[2]:match('@[%a%d_]+') then
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆*")   
   return false  end 
   local username = MsgText[2]
   function prom_username(extra, result, success) 
   if (result and result.code_ == 400 or result and result.message_ == "USERNAME_NOT_OCCUPIED") then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ المعرف غير صحيح \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ المعرف غير صحيح \n⋆ *")   
   return false  end   
   if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ هـذا معرف قناة \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ هـذا معرف قناة \n⋆ *")   
   return false end      
   add_admin(msg,msg.chat_id_,result.id_)
   end  
@@ -216,15 +216,15 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   end 
   if MsgText[1] == "تنزيل مشرف" and MsgText[2] and MsgText[2]:match('@[%a%d_]+') then
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   local username = MsgText[2]
   function prom_username(extra, result, success) 
   if (result and result.code_ == 400 or result and result.message_ == "USERNAME_NOT_OCCUPIED") then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ المعرف غير صحيح \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ المعرف غير صحيح \n⋆ *")   
   return false  end   
   if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ هـذا معرف قناة \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ هـذا معرف قناة \n⋆ *")   
   return false end      
   rem_admin(msg,msg.chat_id_,result.id_)
   end  
@@ -233,7 +233,7 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   
   if MsgText[1] == "رفع مشرف" and MsgText[2] and MsgText[2]:match('^%d+$') then
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   if tonumber(msg.reply_to_message_id_) == 0 then 
   add_admin(msg,msg.chat_id_,MsgText[2])
@@ -241,7 +241,7 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   end  
   if MsgText[1] == "تنزيل مشرف" and MsgText[2] and MsgText[2]:match('^%d+$') then
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   if tonumber(msg.reply_to_message_id_) == 0 then 
   rem_admin(msg,msg.chat_id_,MsgText[2])
@@ -266,10 +266,10 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   local username = MsgText[2]
   function prom_username(extra, result, success) 
   if (result and result.code_ == 400 or result and result.message_ == "USERNAME_NOT_OCCUPIED") then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ المعرف غير صحيح \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ المعرف غير صحيح \n⋆ *")   
   return false  end   
   if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ هـذا معرف قناة \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ هـذا معرف قناة \n⋆ *")   
   return false end      
   Get_Info(msg,msg.chat_id_,result.id_)
   end  
@@ -278,7 +278,7 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   end
   if MsgText[1] == 'فحص البوت' then
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   local Chek_Info = https.request('https://api.telegram.org/bot'..Token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. dreem..'')
   local Json_Info = JSON.decode(Chek_Info)
@@ -303,7 +303,7 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   ----------------------------------------
   if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه التثبيت" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:set(dreem.."Add:Pin"..msg.chat_id_,true)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه التثبيت')
@@ -317,56 +317,56 @@ local function storm_send(chat_id, reply_to_message_id, text) local TextParseMod
   end
   if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه الحذف" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:set(dreem.."Add:Del"..msg.chat_id_,true)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه حذف الرسائل')
   end
   if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه الحذف" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:del(dreem.."Add:Del"..msg.chat_id_)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحية حذف الرسائل')
   end
   if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه الرفع" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:set(dreem.."Add:Set:Admin"..msg.chat_id_,true)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه اضافه مشرفين جدد')
   end
   if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه الرفع" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:del(dreem.."Add:Set:Admin"..msg.chat_id_)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه اضافة مشرفين جدد')
   end
   if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه المعلومات" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:set(dreem.."Add:Info"..msg.chat_id_,true)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه تغير معلومات المجموعه')
   end
   if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه المعلومات" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:del(dreem.."Add:Info"..msg.chat_id_)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه تغير معلومات المجموعه')
   end
   if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه الطرد" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:set(dreem.."Add:Kick"..msg.chat_id_,true)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه طرد المستخدمين')
   end
   if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه الطرد" then 
   if not msg.Creator then
-  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ ⟵*")   
+  storm_send(msg.chat_id_,msg.id_,"*⋆ ⟵ عذراً لا تستطيع استخدام هـذا الامر \n⋆ *")   
   return false  end 
   redis:del(dreem.."Add:Kick"..msg.chat_id_)   
   storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه طرد المستخدمين')
